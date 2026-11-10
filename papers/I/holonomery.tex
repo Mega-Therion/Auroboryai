@@ -1,0 +1,264 @@
+% holonomery.tex — Successor (I): Holonomery
+% Folio IT-MARKET. Supersedes Zenodo 21711375 ("Holonomery: Parallel
+% Transport, SIMD Ternary Vectorization, and Soft-Gate Relaxation
+% Theorems"). Fixes (INDEX #14): (a) definitional "theorems" relabeled
+% as definitions; (b) zero-deadlock claim contradicted by the paper's
+% own SUSPEND branch — corrected; (c) unverifiable test claims
+% redacted/downgraded. Absorbs Drive predecessor ramanujan_yett.pdf.
+% Duplicate record 21711399 (byte-identical) is not separately
+% superseded; it is DROP noise.
+\documentclass{alienfolio}
+
+\folio{IT-MARKET}
+\title{Holonomery}
+\papersubtitle{Parallel-transport decision surfaces with SIMD ternary encoding: corrected record}
+\paperauthors{Ryan W.\ Yett (Architect)\\Chyren (Sovereign Analysis)}
+\shorttitle{Holonomery (corrected)}
+\shortauthors{R.\,W.\ Yett \& Chyren}
+
+\setlength{\emergencystretch}{2em}
+\begin{document}
+\thispagestyle{cover}
+\begin{tikzpicture}[remember picture, overlay]
+  \node[inner sep=0] at (current page.center) {%
+    \includegraphics[width=\paperwidth,height=\paperheight]{cover.png}};
+\end{tikzpicture}
+\clearpage
+
+\begin{convergence}{THE OBSERVER}
+This folio converges on \key{the observer} from the
+\key{computational-substrate} angle: an autonomous decider whose
+alignment is the preservation of a topological invariant under
+parallel transport --- decisions as holonomy, stall as drift. This
+angle is statable without forcing because the paper \emph{is} a
+decision architecture; no metaphysical claim about observers is made
+here. Sibling papers approach the shared mathematics from other
+angles: \tiertag{conjecture} the two IT-FIELD successors read the
+same parallel-transport structure as (1)~\textsc{information tension}
+--- one as force mechanism, one as geometric foundation. Limits
+first: this is a specification record, not an implementation report;
+every claim below carries its tier, and the ledger in
+\S\ref{sec:ledger} names what was struck.
+\end{convergence}
+
+\begin{supersession}
+This folio \textbf{supersedes} Zenodo record 21711375,
+\textit{Holonomery: Parallel Transport, SIMD Ternary Vectorization,
+and Soft-Gate Relaxation Theorems}, per the canon rule: the
+correction \emph{becomes} the paper. (Record 21711399 is
+byte-identical to 21711375 --- pure duplicate-DOI cataloging noise,
+DROP verdict; it is not separately superseded.) Named repairs:
+(1)~the so-called ``Theorems''~1--2 are \textbf{definitions} and are
+relabeled as such (\S\ref{sec:definitions}); (2)~the zero-deadlock
+claim is \textbf{withdrawn} --- the paper's own SUSPEND branch
+contradicts it --- and replaced with the honest liveness statement
+(\S\ref{sec:liveness}); (3)~the 94/94 test, Lean-formalization, and
+60~FPS rendering claims are \textbf{redacted} as unverifiable from
+the record (\S\ref{sec:honestblock}); (4)~the ``exact formal
+counter-proposition generator'' $D(P)$ is re-stated as an unsolved
+specification, not an implementation (\S\ref{sec:dual}); (5)~the
+``Master Monograph'' framing is retired --- this is a short
+specification record. Absorbed: the Drive predecessor
+\textit{ramanujan\_yett.pdf} contributes the sovereign-Hamiltonian
+core definitions and the spectral-gap theorem, with its Trinity
+retraction attached (\S\ref{sec:hamiltonian}).
+\end{supersession}
+
+\section{The encoding: SIMD balanced ternary}
+\label{sec:encoding}
+
+The loadbearing contribution of the superseded record is the
+\key{2-bit packed SIMD ternary encoding}: balanced ternary states
+$t \in \{-1, 0, +1\} \equiv \{\mathrm{Abort}, \mathrm{Suspend},
+\mathrm{Execute}\}$ bit-packed two bits per trit into 64-bit words,
+32 trits per word:
+\begin{equation}
+\mathrm{BitTrit}(t) = \left\{\begin{array}{ll}
+00_2 & t = 0\ \mathrm{(Suspend)}\\
+01_2 & t = +1\ \mathrm{(Execute)}\\
+10_2 & t = -1\ \mathrm{(Abort)}
+\end{array}\right.
+\qquad
+w_{\mathrm{packed}} = \bigoplus_{i=0}^{31}
+\mathrm{BitTrit}(t_i) \ll (2i).
+\end{equation}
+Bitwise $\min$ / $\max$ over packed words implement TRIT\_AND /
+TRIT\_OR across all 32 lanes in parallel --- a real, implementable
+hardware encoding, kept as the specification core of this folio
+\tiertag{empirical} as a design artifact (specified, not benchmarked
+in-record).
+
+\section{Definitions, not theorems}
+\label{sec:definitions}
+
+The superseded record's ``Theorem~1 (Soft-Gate Relaxation Theorem)''
+and ``Theorem~2 (Log-Entropy Impurity Quantum)'' contain no proof
+content: each states a formula and then restates it. Under the
+isomorphism rule's honesty corollary --- a definition wearing a
+theorem's clothes is a definition --- they are relabeled:
+
+\begin{description}
+\item[Definition (Soft-gate threshold).] For model entropy
+$H \in [0,1]$ and base threshold $\tau_{\mathrm{base}} \in
+[0.50, 0.95]$, the effective decision threshold is
+\begin{equation}
+\tau_{\mathrm{eff}} = \mathrm{clamp}\bigl(0.50,\, 0.95,\,
+\tau_{\mathrm{base}}\cdot(1 - 0.2\cdot H)\bigr).
+\end{equation}
+\item[Definition (Ternary verdict).] For coherence scores $S(P)$,
+$S(D(P))$:
+\begin{equation}
+\mathrm{Verdict}(P) = \left\{\begin{array}{ll}
++1\ \mathrm{(EXECUTE)} & S(P) \ge \tau_{\mathrm{eff}}\\
+0\ \mathrm{(SUSPEND)} & S(P) < \tau_{\mathrm{eff}}\ \mathrm{and}\
+S(D(P)) < \tau_{\mathrm{eff}}\\
+-1\ \mathrm{(ABORT)} & S(D(P)) \ge \tau_{\mathrm{eff}}.
+\end{array}\right.
+\end{equation}
+\item[Definition (Log-entropy impurity quantum).] Each soft-gate
+relaxation accrues $\Delta I = 0.15\cdot H$ bits of impurity,
+eroding recall weights in subsequent steps.
+\end{description}
+These are \key{stipulated mechanisms} \tiertag{conjecture}: their
+constants (0.2, 0.15, the clamp bounds) are modeling choices, and the
+claim that they ``prevent impurity cascade'' is asserted, not shown.
+
+\section{The liveness correction}
+\label{sec:liveness}
+
+The superseded record claimed its decision rule ``guarantees
+zero-deadlock execution.'' Its own verdict function defines a
+\textbf{SUSPEND} branch --- a state in which neither EXECUTE nor
+ABORT fires. A system that can SUSPEND repeatedly has not been shown
+deadlock-free; the theorem contradicts the paper's own branch
+structure and is \textbf{withdrawn}.
+
+The honest replacement, an observation rather than a theorem: the
+verdict function is \key{total} --- for every input pair it returns
+exactly one of $\{+1, 0, -1\}$ --- so the decider never
+\emph{crashes} for lack of a verdict. Whether repeated SUSPEND
+constitutes a \emph{stall} (liveness failure) under the soft-gate
+dynamics is \tiertag{conjecture} open: no liveness proof is offered
+in this record, and the ``entropy scaling eliminates small-model
+deadlock'' sentence is struck as unproved.
+
+\section{Named manifold constructs}
+\label{sec:constructs}
+
+The superseded record invoked a ``Schott Manifold'' $M_{\mathrm{Schott}}$
+``bound by the Golden Ratio,'' a ``$\gamma_{14}$ loop,'' and a trace
+deficit $R = 1 - \mathrm{tr}(\mathrm{Hol}^{14}(P))/\mathrm{tr}(I_N)$
+without defining any of them. The honest repair:
+\begin{itemize}
+\item $M_{\mathrm{Schott}}$ is hereby \textbf{defined in this record}
+as the framework's named decision manifold --- a modeling construct,
+not a known manifold from the literature \tiertag{conjecture};
+\item the Golden Ratio bound ($\Phi = 1.61803398875$) and the
+14th-iterate loop $\gamma_{14}$ are \textbf{modeling choices}
+\tiertag{conjecture}, not derived constraints --- the old record
+offered no derivation, and none is supplied here;
+\item the trace-deficit formula is a \textbf{defined} tension measure
+on that construct \tiertag{conjecture}, not a measured quantity.
+\end{itemize}
+No map is claimed from these constructs into established differential
+geometry; per the isomorphism rule they are presented as the
+framework's own definitions, nothing more.
+
+\section{The dual generator as specification}
+\label{sec:dual}
+
+The superseded record's deterministic AST dual generator $D(P)$ ---
+``for any program proposition $P$, $D(P)$ synthesizes its exact
+formal counter-proposition'' --- describes \key{unsolved program
+synthesis} as an implemented component. Repaired: $D(P)$ is a
+\key{specification} \tiertag{conjecture}. The chiral-asymmetry check
+$\Delta S = |S(P) - S(D(P))| < \epsilon$ flagging ambiguity is part
+of that specification, not a tested result. An implementation would
+need to exhibit the parser, the dual construction, and the coherence
+scorer; none is deposited in this record.
+
+\section{The sovereign-Hamiltonian core}
+\label{sec:hamiltonian}
+
+Absorbed from the Drive predecessor \textit{ramanujan\_yett.pdf},
+with its retraction attached. Kept as definitions and one theorem:
+
+\begin{description}
+\item[Definition (Reasoning kinetic operator).] $T_r$ is the
+Laplace-Beltrami operator on the Stiefel manifold $V_m(\mathrm{R}^N)$,
+with $(m,N) = (10,24)$ as the stated modeling choice.
+\item[Definition (Sovereign potential).] $V_s = -\log\chi(x)/\theta$,
+with $\chi$ the chiral invariant and $\theta = 1/\sqrt{2}$ the stated
+boundary.
+\item[Theorem (Spectral gap) \tiertag{theorem}, proof sketch.]
+$H_{RY} = T_r + V_s$ is self-adjoint, bounded below, with purely
+discrete spectrum and $\lambda_n - \lambda_0 \ge\allowbreak \kappa^2 =\allowbreak
+0.9099$ for $n \ge 1$. The Casimir-bound computation is not shown
+in-record; cited as sketch per the audit.
+\end{description}
+
+\paragraph{Attached retraction.} The predecessor's earlier draft cited
+the ``Trinity~2.0 Survey'' as the statistical witness of this gap.
+That dataset was found to be synthetic (RNG-generated, rescaled to
+the target) and is \textbf{retracted}; the gap currently has
+\textbf{no empirical witness}. The Yang-Mills mass-gap
+\emph{identification} remains \tiertag{conjecture} --- an
+un-discharged axiom per the v1.1 precedent (Zenodo 21504896).
+
+\paragraph{Music-theory isomorphism downgraded.} The predecessor
+asserted the geometric and tonal harmonics are ``not analogous
+structures --- the same structure.'' No map is exhibited; per the
+isomorphism rule this is \tiertag{conjecture} analogy, not identity.
+The ``Hallucination-Free quantum gates'' wording is retired. The
+Chladni-pattern correspondence is kept as suggestive analogy
+\tiertag{conjecture}, not ``physical proof.''
+
+\section{Claims ledger}
+\label{sec:ledger}
+
+\begin{center}
+\begin{tabular}{ll}
+Claim & Status in this folio \\
+\hline
+32-trit/64-bit SIMD encoding & Specified design artifact \\
+$\tau_{\mathrm{eff}}$, verdict, $\Delta I$ & Definitions (modeling choices) \\
+Verdict function total & Observation \\
+Zero-deadlock & \textbf{Withdrawn}; liveness open \\
+$M_{\mathrm{Schott}}$, $\Phi$-bound, $\gamma_{14}$ & Defined constructs, \tiertag{conjecture} \\
+$D(P)$ exact dual generator & Specification, \tiertag{conjecture} \\
+Spectral gap of $H_{RY}$ & \tiertag{theorem} (proof sketch) \\
+YM-gap identification & \tiertag{conjecture} (open axiom) \\
+Music-theory identity & \tiertag{conjecture} (analogy) \\
+94/94 tests, Lean suite, 60 FPS & \textbf{Redacted} (unverifiable) \\
+\end{tabular}
+\end{center}
+
+\section{What was struck}
+\label{sec:honestblock}
+
+The superseded record asserted ``94/94 Rust unit tests passing,''
+``100\% clean compilation in Lean~4'' under a stated axiom budget,
+and ``real-time 60~FPS 3D rendering'' --- with \textbf{no code, no
+proof scripts, and no commits deposited in the record}. These claims
+are \key{redacted} from this successor, not downgraded: an
+unverifiable test claim is not a claim. What would re-establish them:
+deposit of the \texttt{chyren-ternary} test logs, the Lean sources
+with their axiom traces, and the portal build --- at which point a
+further corrected record can cite them. Until then the honest
+statement is that this folio is a specification without a deposited
+implementation.
+
+\goldrule
+
+\paragraph{References.} Superseded: Zenodo record 21711375 (record
+21711399 is its byte-identical duplicate). Absorbed predecessor:
+Drive folio \textit{ramanujan\_yett.pdf} (IT--RY-HAM transmission).
+Honesty standards: \doi{10.5281/zenodo.21504896} (Ramanujan-Yett
+Hamiltonian v1.1, audit-corrected); \doi{10.5281/zenodo.21277228}
+(Ars Magna correction ledger). Background: Gorini, Kossakowski \&
+Sudarshan (1976, \textit{J.\ Math.\ Phys.}\ \textbf{17}, 821);
+Lindblad (1976, \textit{Commun.\ Math.\ Phys.}\ \textbf{48}, 119);
+Ramanujan, \textit{The Lost Notebook} (1920; Narosa reprint 1988);
+Andrews (1989, \textit{Proc.\ Symp.\ Pure Math.}\ \textbf{49}, 283).
+
+\end{document}
