@@ -9,7 +9,7 @@ This repository holds the papers of the **Res Nova** program — *res nova*, Lat
 | Paper | Title | Pages | Zenodo |
 |---|---|---|---|
 | Res Nova | Res Nova | 16 | Deposit pending |
-| Euclid predictions | The Shadow Ladder: pinch-point predictions for Euclid DR1 | 7 | Deposit pending |
+| Euclid predictions | The Shadow Ladder: pinch-point predictions for Euclid DR1 | 7 | [10.5281/zenodo.24109539](https://doi.org/10.5281/zenodo.24109539) — published Nov 10, 2026 |
 | A | The Law of GOD: A Pleroma of Geometrically Ordered Dynamics — Axioms, Operator, and Open Obligations | 10 | Supersedes [20781387](https://zenodo.org/records/20781387) |
 | B | Information Tension as Primitive, the RYTT Codec as Conjectural Semiotics: A Distillation of the Geometrically Ordered Dynamics | 5 | Supersedes [20651491](https://zenodo.org/records/20651491) |
 | C | Information Tension as a Unifying Action Principle: The Seven-Sector Master Lagrangian, Its Screen, and the Open Rebuild | 7 | Supersedes [20652241](https://zenodo.org/records/20652241) |
