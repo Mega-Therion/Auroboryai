@@ -1,0 +1,290 @@
+% alien-sigils.sty — the sigil language for the Alien Aesthetic folios
+% RY's standing design spec: one geometric emblem per paper, drawn from the
+% paper's own central object. Gold = the invariant (structure, thresholds,
+% nodes). Cyan = the dynamic (flow, fields, trajectories).
+%
+% Usage:
+%   \sigil{pentagons}              % render a canon sigil, on its dashed
+%                                  % construction field
+%   \sigil[scale=1.2]{dial}        % optional TikZ picture options
+%   \definesigil{myemblem}{ ... }  % define a NEW sigil (TikZ code, centred
+%                                  % on (0,0), inside ~3 units radius)
+%
+% BOLD PASS (2026-11-07, RY: covers all look the same) — TikZ line widths
+% do NOT scale with the monumental 11.85 transform, so the old 1.1pt/0.9pt
+% strokes were hairlines that vanished at a glance. Gold primary now 4pt,
+% cyan secondary 3pt, detail 2-2.5pt, the two published-curve sigils 5pt.
+% C and E use RY's actual published curves (Zenodo 20652219): the Metric
+% Enhancement Factor decay (enhancement) and the Yett Model Law + Newtonian
+% rising fan (yettlaw). Every cover now reads at thumbnail scale.
+%
+% Canon emblems (folio code -> sigil name):
+%   pentagons    IT-PLEROMA    nested pentagons + radial ticks
+%   starpolygon  IT-OMEGA      star-polygon spirograph
+%   hyperbola    IT-HORIZON    hyperbola branches + asymptotes
+%   dial         IT-COGNITION  concentric dial + needle
+%   dipole       IT-FIELD      dipole field lines between two nodes
+%   stems        IT-RY-HAM     stem plot + gap arc
+%   spiral       IT-MARKET     spiral + delta-angle arc
+%   network      IT-NEURO      clique graph (K6)
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{alien-sigils}[2026/11/02 Alien Aesthetic sigil library]
+
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+% ---- palette (shared with alienfolio.cls; defined here so the package
+%      also works standalone) ----
+\RequirePackage{xcolor}
+\providecolor{void}{HTML}{060A14}
+\providecolor{gold}{HTML}{B69441}
+\providecolor{flow}{HTML}{3A8C9B}
+\providecolor{bodytext}{HTML}{E8E6E1}
+\providecolor{muted}{HTML}{9AA0B0}
+
+% dashed construction geometry: the emblem is shown being built
+\tikzset{sigil construction/.style={flow, dashed, thin, opacity=0.38}}
+
+% \definesigil{name}{tikz code} — author hook for new emblems.
+% The code is drawn inside a tikzpicture centred on (0,0); keep the
+% emblem inside roughly 3 units radius so the construction field frames it.
+\newcommand{\definesigil}[2]{%
+  \expandafter\def\csname sigil@#1\endcsname{#2}%
+}
+
+% ---- the 8 canon emblems ----------------------------------------------
+
+% IT-PLEROMA — nested pentagons + radial ticks
+\definesigil{pentagons}{%
+  \foreach \r in {2.5,1.8,1.1} {%
+    \draw[gold, line width=4pt]
+      (90:\r) \foreach \a in {162,234,306,18} { -- (\a:\r) } -- cycle;
+  }%
+  \foreach \a in {90,162,234,306,18} {%
+    \draw[flow, line width=3pt] (\a:2.58) -- (\a:2.88);
+  }%
+  % center dot removed (monumental variant): the title sits at the center
+}
+
+% IT-OMEGA — {5/2} star polygon spirograph, counter-rotated inner star
+\definesigil{starpolygon}{%
+  % REVERTED to the RY-approved thin form: bold made the star's two
+  % horizontal edges strike the kicker (outer, sy=+0.77) and the
+  % affiliation (inner, sy=-0.42). Thin long diagonals read fine.
+  \draw[gold, line width=1.1pt]
+    (90:2.5) \foreach \a in {234,18,162,306} { -- (\a:2.5) } -- cycle;
+  \draw[flow, line width=0.9pt]
+    (126:1.35) \foreach \a in {270,54,198,342} { -- (\a:1.35) } -- cycle;
+  \draw[gold, thin] (0,0) circle (2.5);
+  % center dot removed (monumental variant): the title sits at the center
+}
+
+% IT-HORIZON — hyperbola branches (invariant) on dashed asymptotes
+\definesigil{hyperbola}{%
+  \draw[flow, dashed, line width=2pt, opacity=0.7]
+    (-2.7,-2.7) -- (2.7,2.7) (-2.7,2.7) -- (2.7,-2.7);
+  \foreach \s in {-1,1} {%
+    \draw[gold, line width=4pt]
+      plot[domain=0.5:2.6, samples=60] ({\s*\x},{sqrt(\x*\x-0.25)});
+    \draw[gold, line width=4pt]
+      plot[domain=0.5:2.6, samples=60] ({\s*\x},{-sqrt(\x*\x-0.25)});
+  }%
+  % center dot removed (monumental variant): the title sits at the center
+}
+
+% IT-COGNITION — concentric dial, degree ticks, cyan needle
+% monumental variant: needle + hub removed (they would strike the centered
+% title); drawn at 0.55 scale so two rings frame the text (the middle ring
+% would strike the kicker, so it is dropped; 0.55 clears the affiliation,
+% where 0.5 grazed it)
+\definesigil{dial}{%
+  \begin{scope}[scale=0.55]
+    \foreach \r in {1.8,1.1} {%
+      \draw[gold, line width=3pt] (0,0) circle (\r);
+    }%
+    % (degree ticks dropped: at monumental scale they read as stray marks
+    %  at the top corners; the two rings alone are the dial)
+  \end{scope}
+}
+
+% IT-FIELD — dipole: gold nodes, cyan field lines arcing between them
+\definesigil{dipole}{%
+  % ASYMMETRIC: the title sits high (sy +0.14..+0.25), so shallow arcs
+  % strike it. Upper arcs are TALL (rise steeply past the title's height
+  % at |x|>1.4, outside the text); lower arcs are SHALLOW and sit in the
+  % gap between subtitle and byline (sy -0.15..-0.25).
+  \foreach \k in {0.55,0.70,0.85} {%
+    \draw[flow, line width=3pt]
+      (-1.6,0) .. controls (-1.6,\k) and (1.6,\k) .. (1.6,0);
+  }%
+  \foreach \k in {0.22,0.27} {%
+    \draw[flow, line width=3pt]
+      (-1.6,0) .. controls (-1.6,-\k) and (1.6,-\k) .. (1.6,0);
+  }%
+  % (direction arrow dropped: at monumental scale it read as a stray line at the top)
+  \fill[gold] (-1.6,0) circle (4.2pt);
+  \fill[gold] (1.6,0) circle (4.2pt);
+  \fill[void] (-1.6,0) circle (1.6pt);
+  \fill[void] (1.6,0) circle (1.6pt);
+}
+
+% IT-RY-HAM — stem plot with a cyan gap arc bridging two stems
+% monumental variant: a short crown of bars above the title (the full stem
+% plot's verticals would strike the centered title)
+\definesigil{stems}{%
+  % baseline, grounding the crown (in the clear band above the title)
+  \draw[gold!55, line width=2pt] (-0.8,0.27) -- (0.7,0.27);
+  \foreach \x/\h in {-2.2/1.2,-1.6/2.0,-1.0/1.5,-0.4/2.4,0.2/1.8,%
+                     0.8/2.6,1.4/1.1,2.0/1.9} {%
+    \draw[gold, line width=3pt] (\x*0.5,0.27) -- (\x*0.5,0.27+\h*0.2);
+  }%
+}
+
+% IT-MARKET — cyan spiral on a gold reference circle, delta-angle arc
+\definesigil{spiral}{%
+  \draw[gold, line width=2.5pt] (0,0) circle (2.5);
+  % spiral truncated to a single curl (the full 2.28-turn spiral's outer
+  % turn would strike the tier footer); the curl frames the title cleanly
+  \draw[flow, line width=4pt]
+    plot[domain=0:1.43*pi, samples=220, variable=\t]
+      ({0.162*\t*cos(\t r)},{0.162*\t*sin(\t r)+0.4});
+  \draw[gold, -{Stealth[length=6pt]}, line width=3pt]
+    (28:2.5) arc (28:74:2.5);
+  % center dot removed (monumental variant): the title sits at the center
+}
+
+% IT-NEURO — clique graph K6: gold nodes, cyan edges
+% monumental variant: four-node rectangle framing the title (the full K6's
+% through-center edges would strike the centered title)
+\definesigil{network}{%
+  % perimeter edges only (no through-center diagonals)
+  \draw[flow, line width=2.5pt] (-0.54,0.36) -- (0.54,0.36);
+  \draw[flow, line width=2.5pt] (-0.54,0.36) -- (-0.54,-0.33);
+  \draw[flow, line width=2.5pt] (-0.54,-0.33) -- (0.54,-0.33);
+  \draw[flow, line width=2.5pt] (0.54,-0.33) -- (0.54,0.36);
+  \foreach \x/\y in {-0.54/0.36, 0.54/0.36, -0.54/-0.33, 0.54/-0.33} {%
+    \fill[gold] (\x,\y) circle (2.5pt);
+  }%
+}
+
+% ---- hand-crafted per-paper sigils (2026-11-07, RY: all 13 unique) ----
+% Each one is drawn from its own paper's central object. Monumental rule
+% still applies: no filled element at the center (the title sits there);
+% lines live in the clear bands and side margins, or pass outside the
+% centered text column at every text y-band.
+
+% A (Law of GOD) — gateway: double arch + legs, the Law as a portal.
+% No keystone ring (it crowded the kicker); the double arch + legs is the
+% gateway. Inner arch sized to clear A's wide two-line title.
+\definesigil{gateway}{%
+  \draw[gold, line width=4pt] (0.75,0) arc (0:180:0.75);
+  \draw[flow, line width=3pt] (0.62,0) arc (0:180:0.62);
+  \draw[gold, line width=4pt] (0.62,0) -- (0.62,-0.85);
+  \draw[gold, line width=4pt] (-0.62,0) -- (-0.62,-0.85);
+}
+
+% B (GOD, Distilled / RYTT codec) — triple chevron: nested Lambda angles,
+% the semiotic ternary as three nested roofs over the title. All vertices
+% sit above the title in the clear band; arms run up-out to the top corners.
+\definesigil{chevrons}{%
+  \draw[gold, line width=4pt] (-0.78,0.70) -- (0,0.28) -- (0.78,0.70);
+  \draw[flow, line width=3pt] (-0.62,0.70) -- (0,0.42) -- (0.62,0.70);
+  \draw[gold, line width=4pt] (-0.46,0.70) -- (0,0.56) -- (0.46,0.70);
+}
+
+% E (Geometric Foundation) — nested frames: the foundation as concentric
+% squares. Outer square's verticals are clipped (it reads as top + bottom
+% bars); inner square is complete; gold corner dots mark its corners.
+\definesigil{frames}{%
+  \draw[flow, line width=2.5pt] (-0.80,-0.80) rectangle (0.80,0.80);
+  \draw[gold, line width=4pt] (-0.62,-0.62) rectangle (0.62,0.62);
+  \foreach \x/\y in {-0.62/0.62, 0.62/0.62, -0.62/-0.62, 0.62/-0.62} {%
+    \fill[gold] (\x,\y) circle (1.5pt);
+  }%
+}
+
+% J (Binary Chirallic System) — double mirrored crescents: the binary as
+% two, the chirallic as a mirrored pair. Each side is a double parenthesis
+% (gold outer, cyan inner) framing the title.
+\definesigil{crescents}{%
+  \draw[gold, line width=4pt] (135:0.64) arc (135:225:0.64);
+  \draw[flow, line width=3pt] (135:0.52) arc (135:225:0.52);
+  \draw[gold, line width=4pt] (-45:0.64) arc (-45:45:0.64);
+  \draw[flow, line width=3pt] (-45:0.52) arc (-45:45:0.52);
+}
+
+% K (Conformal Parameterization) — double ellipse: conformal level sets as
+% nested ovals around the title. Wide ovals, so their sides clear the text
+% column and their tops/bottoms sit in the clear bands.
+\definesigil{ellipses}{%
+  % single bold gold oval only: the inner cyan ellipse struck K's wide
+  % two-line title (its sides crossed the title's top/bottom lines).
+  \draw[gold, line width=4pt] (0,0) ellipse (0.70 and 0.45);
+}
+
+% L (Resource Holonomy) — critical line + logistic S-curve: the market
+% crossing the critical line. Gold horizontal line in the clear band
+% between byline and affiliation; cyan tanh S-curve crossing it at the
+% center; open gold ring marks the crossing point.
+\definesigil{criticalline}{%
+  \draw[gold, line width=4pt] (-0.75,-0.30) -- (0.75,-0.30);
+  \draw[flow, line width=4pt]
+    plot[domain=-0.75:0.75, samples=120, variable=\x]
+      ({\x},{-0.30 + 0.45*tanh(1.5*\x)});
+  \draw[gold, line width=2pt] (0,-0.30) circle (0.06);
+}
+
+% M (OmegaCDM) — giant Omega: the paper's own central symbol, Omega, at
+% monumental scale. Single gold arch + legs + outward feet; no inner arc
+% (its ends would touch M's wide two-line title). Arch widened to clear
+% the title with margin.
+\definesigil{omega}{%
+  \draw[gold, line width=4pt] (0.60,0.07) arc (0:180:0.60);
+  \draw[gold, line width=4pt] (0.60,0.07) -- (0.60,-0.75);
+  \draw[gold, line width=4pt] (-0.60,0.07) -- (-0.60,-0.75);
+  \draw[gold, line width=4pt] (0.60,-0.75) -- (0.67,-0.75);
+  \draw[gold, line width=4pt] (-0.60,-0.75) -- (-0.67,-0.75);
+}
+
+
+% C (Information Tension flagship) — the Metric Enhancement Factor curve,
+% from RY's published Zenodo record 20652219 (enhancement_factor.png):
+% a steep decay that flattens to its asymptote. Bold cyan: steep drop
+% down the left margin (outside the text column while in the title band),
+% flattening to a horizontal tail in the clear band between byline and
+% affiliation. The curve IS the information tension.
+\definesigil{enhancement}{%
+  \draw[flow, line width=5pt]
+    (-0.75,0.75) .. controls (-0.72,0.20) and (-0.65,-0.38) .. (-0.45,-0.38)
+    -- (0.75,-0.38);
+}
+
+% E (Geometric Foundation) — the Yett Model Law + Newtonian curves, from
+% RY's published Zenodo record 20652219 (acceleration_comparison.png):
+% the solid teal Yett law rising against the dotted gold Newtonian
+% diagonal. A bold rising fan in the clear band above the title.
+\definesigil{yettlaw}{%
+  \draw[flow, line width=5pt]
+    (-0.75,0.38) .. controls (-0.30,0.42) and (0.20,0.58) .. (0.75,0.80);
+  \draw[gold, dotted, line width=2.5pt]
+    (-0.75,0.30) -- (0.75,0.62);
+}
+
+% ---- renderer -----------------------------------------------------------
+% \sigil[options]{name} — draws the dashed construction field, then the
+% emblem. Unknown names warn and leave the field empty (never silently
+% substitute a different emblem).
+\newcommand{\sigil}[2][]{%
+  \begin{tikzpicture}[#1]
+    % construction field: cross lines dropped (they would strike the
+    % centered title at monumental scale); outer 3.1 ring dropped (it is
+    % what crossed the frame); inner 2.05 ring kept (off-frame at 15.8)
+    \draw[sigil construction] (0,0) circle (2.05);
+    \@ifundefined{sigil@#2}{%
+      \node[gold, font=\ttfamily\small] at (0,0) {?};
+      \PackageWarning{alien-sigils}{Unknown sigil '#2' — construction field left empty}%
+    }{%
+      \csname sigil@#2\endcsname
+    }%
+  \end{tikzpicture}%
+}

@@ -1,0 +1,22 @@
+# LaTeX intermediates (PDFs are committed intentionally)
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+# Coq build products
+*.vo
+*.vok
+*.vos
+*.glob
+# Lean build products
+.lake/
+# Python
+__pycache__/
+*.pyc
