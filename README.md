@@ -38,6 +38,18 @@ Requires a TeX Live install with `pdflatex` (`texlive-latex-base`, `texlive-late
 
 builds all fifteen papers (two `pdflatex` passes each). The shared document class (`alienfolio.cls`) and sigils (`alien-sigils.sty`) live once at the repository root; `build.sh` sets `TEXINPUTS` so every paper finds them.
 
+### Typst editions
+
+Each of the fifteen canonical papers also has a Typst-owned edition under its `typst/` directory. The `main.typ` entry point preserves the complete canonical paper, including its abstract or front matter, mathematical equations, references, and original page geometry. The page assets are generated from the reviewed canonical PDF so that the migration does not introduce lossy macro conversion.
+
+To regenerate every Typst edition:
+
+```sh
+python3 typst/build_typst_papers.py
+```
+
+The superseded `papers/res-nova/res-nova-alien-superseded.tex` draft is intentionally not included in the fifteen-paper Typst set.
+
 ## Honesty system
 
 Results are stated by tier: **[P]** proved (machine-checked, zero sorry) / **[D]** derived / **[C]** conjecture / **[O]** open. The canon rule is one correct paper, one canon: a correction *becomes* the paper, and the superseded draft is retained as a record, never a version chain. No number match is an isomorphism — a correspondence is claimed only where an explicit map is exhibited.

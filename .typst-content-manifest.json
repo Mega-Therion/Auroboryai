@@ -1,0 +1,11 @@
+{
+  "task_kind": "existing-typst",
+  "output": "pdf",
+  "signals": ["academic-paper", "repository-wide", "math-equations", "bibliography"],
+  "hard_constraints": [],
+  "content_features": {
+    "code_blocks": 1,
+    "defined_terms": 15,
+    "portrait_images": 15
+  }
+}
