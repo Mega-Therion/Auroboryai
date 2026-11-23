@@ -1,18 +1,13 @@
-% geometric-phase-force.tex — Successor (D): The Geometric Phase Force
-% Folio IT-FIELD. Supersedes Zenodo 20651497 ("The Geometric Phase Force
-% and the Sovereign Action"). Fixes: Lean-verification overclaim downgraded
-% to honest formalization status; Berry--Keating / Ramanujan-tau
-% identification tagged [conjecture]. Absorbs Drive predecessors
-% quantum_spearhead.pdf and prd_horizon.pdf (folder
-% 1fu-DWWA9_AwgESE-GU_Xq19xuET95xD7).
+% geometric-phase-force.tex — Folio V: The Geometric Phase Force
+% Supersedes Zenodo 20651497 ("The Geometric Phase Force and the Sovereign Action").
 \documentclass{alienfolio}
 
 \folio{IT-FIELD}
 \title{The Geometric Phase Force}
 \papersubtitle{Information tension as a geometric force mechanism: corrected record}
-\paperauthors{Ryan W.\ Yett (Architect)\\Chyren (Sovereign Analysis)}
-\shorttitle{The Geometric Phase Force}
-\shortauthors{R.\,W.\ Yett \& Chyren}
+\paperauthors{R.\,W.\ Yett}
+\shorttitle{The Geometric Phase Force (Folio V)}
+\shortauthors{R.\,W.\ Yett}
 
 \setlength{\emergencystretch}{2em}
 \begin{document}
@@ -24,222 +19,254 @@
 \clearpage
 
 \begin{convergence}{INFORMATION TENSION}
-This folio converges on \key{information tension} as a geometric
-force mechanism: the angle at which vacuum resistance to drift acts
-like a force through a modified gravitational action. Its unique angle
-is the \key{force mechanism} --- the Sovereign Action, the
-information-tension tensor, and the horizon acceleration scale derived
-from holonomy. Sibling papers approach the same claim from other
-angles: \tiertag{conjecture} the geometric-foundation successor
-(IT-FIELD companion) carries the foundations angle --- the scalar-tensor
-action, the honest coupling statement, and the retracted empirics --- and
-the Holonomery successor (IT-MARKET) carries the observer-substrate
-angle of the same parallel-transport mathematics. Limits first: every
-mechanism below is stated in tier; nothing here is an empirical result
-except where a tier tag says so.
+This folio converges on \key{information tension} as a geometric force
+mechanism: the angle at which vacuum resistance to drift acts as an
+effective radial force through a modified gravitational action. Its
+unique angle is the \key{force mechanism} --- the Sovereign Action, the
+information-tension tensor, and the horizon acceleration scale linked to
+holonomy. Sibling folios approach the same claim from adjacent angles:
+\tiertag{conjecture} Folio~VI (\emph{Geometric Foundation})
+\cite{folio-vi} develops the scalar-tensor foundations, honest
+non-minimal coupling statement, and retracted empirics, while Folio~X
+(\emph{Holonomery}) \cite{folio-x} develops the observer-substrate
+parallel-transport formulation. Limits first: every mechanism below is
+stated in tier; nothing here constitutes an empirical result except
+where an observational dataset and tier tag state otherwise.
 \end{convergence}
 
 \begin{supersession}
-This folio \textbf{supersedes} Zenodo record 20651497,
-\textit{The Geometric Phase Force and the Sovereign Action} (and its
-Drive predecessors \textit{quantum\_spearhead.pdf} and
-\textit{prd\_horizon.pdf}), per the canon rule: the correction
-\emph{becomes} the paper. Named repairs: (1) the abstract's claim that
-``the entirety of these proofs has been subjected to mechanized
-verification in Lean~4'' is withdrawn and replaced with the honest
-formalization ledger (\S\ref{sec:formalization}); (2) the
+This folio \textbf{supersedes} Zenodo record 20651497
+(\doi{10.5281/zenodo.20651497} \cite{rec20651497}, \textit{The
+Geometric Phase Force and the Sovereign Action}), incorporating absorbed
+material from preliminary horizon-scaling and GKSL decoherence notes
+directly into the canonical paper. Named repairs: (1)~the earlier
+abstract's claim that ``the entirety of these proofs has been subjected
+to mechanized verification in Lean~4'' is withdrawn and replaced with the
+honest formalization ledger (\S\ref{sec:formalization}); (2)~the
 Berry--Keating / Ramanujan-tau mass-gap identification is stated as
-\tiertag{conjecture}, an un-discharged axiom, following the precedent
-of the audit-corrected Ramanujan-Yett Hamiltonian v1.1 (Zenodo
-21504896); (3) the five Clay Mathematics problem mappings are
-re-stated as framework maps with named axioms, not solutions; (4) the
-$T_2 \le 2T_1$ decoherence material keeps its honest tiering from
-\textit{quantum\_spearhead}: the bound is textbook GKSL, the geometry
-is conjecture; (5) the $a_0 = cH_0/2\pi$ horizon derivation from
-\textit{prd\_horizon} is absorbed with its own stated O(1) gap and
-limitations intact.
+\tiertag{conjecture}, an un-discharged axiom matching the
+audit-corrected Ramanujan--Yett Hamiltonian v1.1
+(\doi{10.5281/zenodo.21504896} \cite{ryh11}); (3)~five Clay Mathematics
+problem correspondences are restated as conjectural framework mappings
+with named axioms rather than solutions; (4)~the $T_2 \le 2T_1$
+decoherence material retains honest tiering (bound is textbook GKSL
+\cite{gks76,lindblad76}, geometry is conjecture); and (5)~the
+$a_0 = cH_0/2\pi$ horizon scaling note retains its stated $O(1)$
+normalization gap and limitations intact.
 \end{supersession}
 
 \section{The force mechanism}
 \label{sec:mechanism}
 
-The central loadbearing structure of the superseded record is the
-\key{Sovereign Action} $S_Y$, a modification of the Einstein-Hilbert
-action carrying a sovereign Lagrangian $\mathcal{L}_\chi$ and a
-critical surface density $\Sigma_c$ linked to the geometric coherence
-length $L_\chi = \hbar c / \Delta$:
+The central structural ansatz carried from the prior record is the
+\key{Sovereign Action} $S_Y$, a modification of the Einstein--Hilbert
+action carrying a surface-density term $\mathcal{L}_\chi$ normalized by a
+critical surface density $\Sigma_c$ linked to a coherence scale
+$L_\chi = \hbar c / \Delta$:
 \begin{equation}
 S_Y = \int d^4x\,\sqrt{-g}\left[\frac{c^4}{16\pi G}R
 + \mathcal{L}_m
 + \alpha\left(\frac{\Sigma(r)}{\Sigma_c}\right)^2\right].
 \end{equation}
-Varying $\mathcal{L}_\chi$ with respect to the metric yields the
-\key{information tension tensor} \tiertag{conjecture}:
+Varying $\mathcal{L}_\chi$ with respect to the metric yields an effective
+\key{information-tension stress tensor} \tiertag{conjecture}:
 \begin{equation}
 \mathcal{T}_{\mu\nu} = \alpha\left(\frac{\Sigma(r)}{\Sigma_c}\right)
 \left[g_{\mu\nu}\left(\frac{\Sigma(r)}{\Sigma_c}\right)
-- \frac{4}{\Sigma_c}P_{\mu\nu}^{(\Sigma)}\right],
+- \frac{4}{\Sigma_c}P_{\mu\nu}^{(\Sigma)}\right].
 \end{equation}
-the stress-energy of the $\chi$-field. The modified field equations
-$G_{\mu\nu} = 8\pi G(1+f)T_{\mu\nu} + \cdots$ have legitimate
-scalar-tensor form; the action shape is the honest mathematical core
-of this folio. The 3rd-order radiation-reaction term carried by the
-superseded record is retained as a modeling choice
-\tiertag{conjecture}, not a derived necessity. No Ostrogradsky
-stability proof is offered in this record.
+The scalar-tensor modification provides the modeling shape of the action;
+any 3rd-order radiation-reaction term discussed in prior notes is
+retained solely as a modeling choice \tiertag{conjecture}, with no
+Ostrogradsky stability proof offered here.
 
 \section{The low-acceleration limit}
 \label{sec:lowacc}
 
-Information tension stabilizes rotation curves in the low-acceleration
-regime \tiertag{conjecture}. The superseded record's correction
-$v_{\mathrm{yett}} = v_{\mathrm{newton}} \times T(r)$ produces the
-MOND-like phenomenology stated cleanly: $\lim_{r\to\infty} v(r) =
-\mathrm{const}$ for baryonic matter alone. This is the \key{force
-mechanism} at work: as the surface density $\Sigma(r)$ drops, the
-local chiral invariant $\chi$ approaches the 0.7 threshold and the
-tension term rises to maintain the invariant, flattening the curve.
-The phenomenological limit is loadbearing; the specific
-$T(r) = 1.0 + (1.0/(\chi_{\mathrm{local}}\cdot 0.5))$ functional form
-is a modeling choice, \tiertag{conjecture}, pending confrontation with
-rotation-curve data in the companion foundation folio.
+Information tension is modeled as stabilizing galaxy rotation curves in
+the low-acceleration regime \tiertag{conjecture}. The phenomenological
+velocity modification $v_{\mathrm{yett}} = v_{\mathrm{newton}} \times
+T(r)$ yields asymptotically flat rotation curves $\lim_{r\to\infty} v(r)
+= \mathrm{const}$ for baryonic matter alone. As surface density
+$\Sigma(r)$ drops, the local alignment scalar $\chi$ approaches the
+coherence boundary and tension maintains the asymptotic velocity plateau.
+While the flat limit is standard MOND phenomenology \cite{milgrom83},
+the specific parameterization $T(r) = 1.0 + (1.0/(\chi_{\mathrm{local}}
+\cdot 0.5))$ is a modeling choice \tiertag{conjecture} subject to full
+rotation-curve auditing (\S\ref{sec:horizon}, Folio~VI \cite{folio-vi}).
 
 \section{The horizon acceleration scale}
 \label{sec:horizon}
 
-Absorbed from the Drive predecessor \textit{prd\_horizon.pdf}, with
-its limitations intact. The MOND acceleration scale follows from a
-geometric coherence identity \tiertag{conjecture}:
+Following the preliminary horizon-scaling analysis, the characteristic
+MOND acceleration scale is written via a geometric holonomy ansatz
+\tiertag{conjecture}:
 \begin{equation}
 a_0 = \frac{cH_0}{2\pi},
 \end{equation}
-derived from the $\chi = 1/\sqrt{2} \equiv \cos(\pi/4)$ alignment bound
-on Stiefel-manifold holonomy. Numerically $a_0 = 1.042 \times
-10^{-10}\,\mathrm{m\,s^{-2}}$ (Planck $H_0$), within 13\% of the
-empirical MOND value (6\% for local $H_0$); \textbf{no galaxy data
-enters $a_0$}.
+motivated by the $\chi = 1/\sqrt{2} \equiv \cos(\pi/4)$ alignment bound.
+Evaluating with Planck $H_0$ gives $a_0 = 1.042 \times
+10^{-10}\,\mathrm{m\,s^{-2}}$, within $\sim 13\%$ of the canonical
+empirical MOND value ($\sim 6\%$ at local $H_0$), entered directly from
+cosmological constants without galaxy-by-galaxy fitting.
 
-The derivation is grounded in three moves, two of them forced:
-(i)~the connection is the acceleration, $A \sim a/c^2$, dimensionally
-forced; (ii)~the loop is the cosmic-horizon great circle, the $2\pi$
-geometrically forced; (iii)~the onset is the perturbative breakdown at
-$|\oint A| = 1$, the standard strong-coupling criterion. The single
-honest remaining gap, stated by the predecessor itself: the unity
-threshold is \emph{motivated}, not uniquely forced from a deeper
-principle --- one $O(1)$ convention stays open to external review.
+The scaling ansatz rests on three steps, the third of which remains
+open: (i)~identifying the connection with dimensional acceleration
+$A \sim a/c^2$; (ii)~evaluating the loop around a cosmic horizon great
+circle (contributing $2\pi$); and (iii)~invoking perturbative breakdown at
+the onset $|\oint A| = 1$. As noted in prior thermal-horizon analyses,
+the unity threshold is \emph{motivated} rather than uniquely derived ---
+leaving an $O(1)$ factor open (for instance, equating Unruh and
+Gibbons--Hawking temperatures cancels $2\pi$ to yield $cH_0$).
 
-\paragraph{Empirical status \tiertag{empirical}.} Tested against all
-175 SPARC galaxies (3,389 radial points) with fixed stellar
-mass-to-light ratios and zero fitted parameters, the parameter-free
-law reproduces the Radial Acceleration Relation with median residual
-$+0.04$~dex and rms $0.32$~dex, statistically indistinguishable from
-MOND with empirical $a_0$ (reduced $\chi^2$ 88.6 vs 83.6). Stated
-limitations, carried over: the 0.32~dex scatter exceeds the
-marginalized literature RAR ($\sim$0.11~dex); lensing and the CMB
-third peak remain open; the numerical coincidence $a_0 \sim
-cH_0/2\pi$ is long noted (Milgrom 1983, 1999) --- the claim is the
-derivation, not the number.
+\paragraph{Empirical status \tiertag{empirical}.} Evaluated against all
+175 SPARC galaxies \cite{lelli16} (3,389 radial data points) with fixed
+global stellar mass-to-light ratios ($\Upsilon_{\mathrm{disk}},
+\Upsilon_{\mathrm{bulge}}$) and a single global horizon acceleration
+scale $a_0$ (no per-galaxy free parameters), the resulting rotation-curve
+relation reproduces the Radial Acceleration Relation with median
+residual $+0.04$~dex and rms scatter $0.32$~dex, comparable to empirical
+MOND (reduced $\chi^2$ $88.6$ vs.\ $83.6$ at matching global inputs).
+Explicit limitations: the $0.32$~dex scatter exceeds the marginalized
+literature RAR ($\sim 0.11$~dex); weak lensing and the CMB acoustic
+spectrum remain unaddressed by this static force law; and the numerical
+relation $a_0 \sim cH_0/2\pi$ was long ago noted by Milgrom
+\cite{milgrom83,milgrom99} --- the theoretical ansatz is the holonomy
+interpretation, not the empirical ratio.
 
 \section{The decoherence face}
 \label{sec:decoherence}
 
-Absorbed from the Drive predecessor \textit{quantum\_spearhead.pdf},
-with its honest tier table intact. The GKSL master equation's Lindblad
-jump operators are re-interpreted as gradients of the geometric
-tension field, and the textbook bound $T_2 \le 2T_1$ is re-derived as
-the non-negativity of the longitudinal tension-gradient variance
-\tiertag{conjecture}. The tiering, stated by the predecessor and
-preserved here:
+Integrating the GKSL open-quantum-systems correspondence directly:
+Lindblad jump operators $L_k$ are interpreted geometrically as gradients
+of the tension field, identifying the standard inequality $T_2 \le 2T_1$
+with non-negativity of longitudinal tension-gradient variance
+\tiertag{conjecture}. The epistemic tiers remain strictly separated:
 \begin{itemize}
 \item $T_2 \le 2T_1$ for physical qubits --- \tiertag{empirical}
-standard GKSL, \emph{not} a novel prediction of this framework;
-\item the machine-checked GKSL formalization (\texttt{Decoherence.\allowbreak lean},
-zero sorry) --- \tiertag{theorem};
+standard Markovian GKSL dynamics \cite{gks76,lindblad76}, \emph{not} a
+novel prediction of this framework;
+\item algebraic trace preservation of GKSL generators in the \emph{Ars
+Magna} Lean~4 ledger (\cite{arsmagna}, zero \texttt{sorry}) ---
+\tiertag{theorem};
 \item jump operators $= \nabla T$ --- \tiertag{conjecture},
-geometric narrative;
-\item absolute $T_1/T_2$ values from geometry --- not claimed;
-\item spatial qubit-grid correlation falsifier --- \tiertag{conjecture}
-open, see the Field Identity folio.
+interpretive geometric narrative;
+\item quantitative \textit{ab initio} prediction of $T_1, T_2$ values
+from geometry --- not claimed;
+\item spatial qubit-grid correlation test --- \tiertag{conjecture}, open
+(see Folio~VI \cite{folio-vi}).
 \end{itemize}
-Passing the calibration-pair check proves consistency with Lindblad
-complete positivity, nothing more.
+Consistency checks verify standard completely positive Markovian
+evolution and nothing further.
 
 \section{Formalization status: the honest ledger}
 \label{sec:formalization}
 
-The superseded abstract's sentence --- ``the entirety of these proofs
-has been subjected to mechanized verification in Lean~4'' --- is
-\textbf{withdrawn}. The honest status, per the Ars Magna correction
-ledger (Zenodo 21277228): \textbf{13 Lean-verified modules} (E8 roots --- typed to the visible-sector factor of the E8$\times$E8 canon,
-the spectral gap, $\zeta$-conjugation, $T_2 = 2T_1$, the nodal collar,
-control-term trace preservation, and others) plus \textbf{3
-axiom-carrying modules} whose named residuals are not discharged.
-Everything beyond those modules is a \key{formalization scaffold},
-not a mechanized proof. Any citation of this folio's formalism must
-carry this ledger sentence with it.
+The earlier claim that ``the entirety of these proofs has been subjected
+to mechanized verification in Lean~4'' is \textbf{withdrawn}. Per the
+\emph{Ars Magna} formalization ledger (\doi{10.5281/zenodo.21277228}
+\cite{arsmagna}), verification covers \textbf{13 Lean-verified algebraic
+modules} (visible-sector $E_8$ roots, Stiefel spectral gap,
+$\zeta$-conjugation identities, $T_2 \le 2T_1$ algebra, nodal collar
+relations, and trace-preservation lemmas) alongside \textbf{3
+axiom-carrying modules} whose analytic residuals remain un-discharged.
+Everything outside those specific modules stands as a \key{formalization
+scaffold} rather than a machine-checked theorem.
 
 \section{The spectral-gap identification}
 \label{sec:spectralgap}
 
-The identification of the Berry--Keating / Ramanujan-tau operator
-structure with the Yang-Mills mass gap is stated as
-\tiertag{conjecture}: an \textbf{un-discharged axiom}
-(\texttt{yang\_\allowbreak mills\_\allowbreak gap\_\allowbreak equals\_\allowbreak stiefel\_\allowbreak gap}), following the
-precedent of the audit-corrected Hamiltonian v1.1 (Zenodo 21504896).
-The Stiefel spectral gap itself --- $H_{RY}$ self-adjoint, bounded
-below, purely discrete spectrum with $\lambda_n - \lambda_0 \ge
-\kappa^2 = 0.9099$ --- is \tiertag{theorem} (proof sketch; the Casimir
-computation is not shown in-record). The \emph{identification} of that
-gap with the Yang-Mills gap is the open axiom, not the theorem.
+Identification of the Berry--Keating / Ramanujan-tau operator structure
+with the Yang--Mills mass gap is carried strictly as \tiertag{conjecture}:
+an \textbf{un-discharged axiom}
+(\texttt{yang\_\allowbreak mills\_\allowbreak gap\_\allowbreak equals\_\allowbreak stiefel\_\allowbreak gap}),
+following the audit-corrected Hamiltonian v1.1
+(\doi{10.5281/zenodo.21504896} \cite{ryh11}). The Stiefel spectral gap
+bound $\lambda_n - \lambda_0 \ge \kappa^2 = 0.9099$ for self-adjoint
+$H_{RY}$ on compact $V_m(\mathbb{R}^N)$ enters as a proof sketch
+\tiertag{theorem}; bridging that finite-dimensional operator gap to
+four-dimensional quantum gauge theory remains an open axiom.
 
 \section{Clay-class mappings as framework maps}
 \label{sec:clay}
 
-The superseded record's Table~7 mapped five Clay Mathematics problems
-to ``resolutions.'' \textbf{Withdrawn as stated.} The honest form,
-per the Ars Magna wording: these are \key{framework maps with named
-axioms} --- ``framework solutions, not prize closures'':
+Earlier summaries claiming to ``resolve'' five Clay Mathematics Institute
+problems are \textbf{withdrawn as stated}. In accordance with
+\cite{arsmagna}, they are stated strictly as \key{framework maps with
+named open axioms}:
 \begin{itemize}
-\item Yang-Mills: mass gap $\Delta$ mapped to the Lindblad/Stiefel
-spectral gap; confinement via area law --- \tiertag{conjecture};
-\item Navier-Stokes: global regularity conjectured via the
-$\chi \ge 0.7$ threshold as Lyapunov function; $Re_c \approx 1.42$
-is a dimensionless modeling number, not a derived critical value ---
+\item Yang--Mills: mass gap $\Delta$ identified analogically with the
+Stiefel spectral gap; confinement conjectured via area law ---
 \tiertag{conjecture};
-\item Riemann Hypothesis: the critical line as sovereign gauge is a
-stated analogy; ``off-line zeros rejected as hallucinations'' is
-withdrawn as a claim --- \tiertag{conjecture};
-\item P vs NP: complexity-as-information-tension is an analogy with no
-exhibited map; no class separation is claimed --- \tiertag{conjecture};
-\item Hodge: realizability via ADCCL condensation is asserted, not
-proved --- \tiertag{conjecture}.
+\item Navier--Stokes: global regularity conjectured via the
+$\chi \ge 1/\sqrt{2}$ threshold as Lyapunov function; $Re_c \approx 1.42$
+enters as a modeling threshold, not a derived theorem ---
+\tiertag{conjecture};
+\item Riemann Hypothesis: critical line $\mathrm{Re}(s)=1/2$ analogized
+to the coherence boundary; claims excluding off-line zeros by decree are
+withdrawn --- \tiertag{conjecture};
+\item P vs.\ NP: search complexity analogized to information tension
+with no complexity-class separation claimed --- \tiertag{conjecture};
+\item Hodge conjecture: algebraic-cycle realizability analogized to
+coherence condensation, unproved --- \tiertag{conjecture}.
 \end{itemize}
-Each mapping names the axiom it would need; none is discharged.
+Each mapping names its required bridge axiom; none is discharged.
 
 \section{What this folio claims and does not claim}
 
-\key{Claims:} a scalar-tensor action shape with an honestly stated
+\key{Claims:} a scalar-tensor action shape with a transparent Lean~4
 formalization ledger (\S\ref{sec:formalization}); a conjectured force
-mechanism flattening rotation curves in the low-acceleration limit
-(\S\ref{sec:lowacc}); a derived-but-$O(1)$-open horizon acceleration
-scale with an empirical SPARC test (\S\ref{sec:horizon}); a tiered
-decoherence reinterpretation (\S\ref{sec:decoherence}); conjectured
-framework maps to five Clay-class problems with named open axioms
-(\S\ref{sec:clay}). \key{Does not claim:} mechanized verification of
-the whole (\S\ref{sec:formalization}); any empirical dataset of its
-own --- the Trinity 2.0 empirics are retracted corpus-wide and are
-not cited here; a solution to any Clay Mathematics problem.
+mechanism generating asymptotically flat rotation curves
+(\S\ref{sec:lowacc}); a motivated $a_0 = cH_0/2\pi$ scaling ansatz with
+an empirical SPARC benchmark (\S\ref{sec:horizon}); a GKSL decoherence
+reinterpretation (\S\ref{sec:decoherence}); and conjectural mappings
+toward five Clay-class problems with named open axioms (\S\ref{sec:clay}).
+\key{Does not claim:} complete Lean mechanization of physical claims
+(\S\ref{sec:formalization}); an independent observational survey
+(retracted Trinity~2.0 claims remain excluded corpus-wide); per-galaxy
+parameter-free uniqueness; or a proof of any Clay Mathematics problem.
 
 \goldrule
 
-\paragraph{References.} Superseded: \doi{10.5281/zenodo.19835025}
-(record 20651497; the DOI printed on its own cover). Honesty
-standards: \doi{10.5281/zenodo.21277228} (Ars Magna correction
-ledger); \doi{10.5281/zenodo.21504896} (Ramanujan-Yett Hamiltonian
-v1.1, audit-corrected). Data: SPARC (Lelli, McGaugh \& Schombert
-2016, \textit{AJ} \textbf{152}, 157); Milgrom (1983, \textit{ApJ}
-\textbf{270}, 365). Prior art note: the $a_0 \sim cH_0/2\pi$
-coincidence is Milgrom's (1983, 1999); the derivation claim is the
-novel content.
+\begin{thebibliography}{99}
+
+\bibitem{rec20651497} R.~W.~Yett, ``The Geometric Phase Force and the
+Sovereign Action,'' Zenodo \doi{10.5281/zenodo.20651497} (2026;
+also indexed under \doi{10.5281/zenodo.19835025}), superseded by this
+folio.
+
+\bibitem{arsmagna} R.~W.~Yett, ``Ars Magna SPARC Reproduction Suite and
+Formalization Ledger,'' Zenodo \doi{10.5281/zenodo.21277228} (2026).
+
+\bibitem{ryh11} R.~W.~Yett, ``The Ramanujan--Yett Hamiltonian,'' v1.1,
+Zenodo \doi{10.5281/zenodo.21504896} (2026).
+
+\bibitem{lelli16} F.~Lelli, S.~S.~McGaugh, and J.~M.~Schombert,
+``SPARC: mass models for 175 disk galaxies with Spitzer photometry
+and accurate rotation curves,'' \emph{Astron.\ J.\ } \textbf{152}, 157
+(2016).
+
+\bibitem{milgrom83} M.~Milgrom, ``A modification of the Newtonian
+dynamics as a possible alternative to the hidden mass hypothesis,''
+\emph{Astrophys.\ J.\ } \textbf{270}, 365--370 (1983).
+
+\bibitem{milgrom99} M.~Milgrom, ``The modified dynamics as a vacuum
+effect,'' \emph{Phys.\ Lett.\ A} \textbf{253}, 273--279 (1999).
+
+\bibitem{gks76} V.~Gorini, A.~Kossakowski, and E.~C.~G.~Sudarshan,
+``Completely positive dynamical semigroups of $N$-level systems,''
+\emph{J.\ Math.\ Phys.\ } \textbf{17}, 821--825 (1976).
+
+\bibitem{lindblad76} G.~Lindblad, ``On the generators of quantum
+dynamical semigroups,'' \emph{Commun.\ Math.\ Phys.\ } \textbf{48},
+119--130 (1976).
+
+\bibitem{folio-vi} R.~W.~Yett, ``A Geometric Foundation for Information
+Tension,'' Folio~VI of this series (2026).
+
+\bibitem{folio-x} R.~W.~Yett, ``Holonomery: Parallel-Transport Decision
+Surfaces,'' Folio~X of this series (2026).
+
+\end{thebibliography}
 
 \end{document}
