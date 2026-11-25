@@ -1,7 +1,7 @@
 % omegacdm.tex — IT-OMEGA successor folio
 % Supersedes Zenodo record 21867985.
 % Ships alongside: verify_omegacdm_prediction.py (the runtime verification).
-% Staging only — not for upload.
+% Not deposited as-is; Zenodo v2 (10.5281/zenodo.24530683) carries a separate status note.
 \documentclass{alienfolio}
 \usepackage{listings}
 
@@ -21,7 +21,7 @@
 \usesigil{omega}
 \title{OmegaCDM: A Pre-Registered Cosmological Prediction}
 \papersubtitle{$\Omega_{\Lambda} = \ln 2$ --- structure, runtime verification, and status}
-\paperauthors{Ryan W.\ Yett (Architect)\\Chyren (Sovereign Analysis)}
+\paperauthors{R.\,W.\ Yett (Architect)\\Chyren (Sovereign Analysis)}
 \shorttitle{OmegaCDM ($\Omega_{\Lambda} = \ln 2$)}
 \shortauthors{R.\,W.\ Yett \& Chyren}
 
@@ -44,7 +44,8 @@ would kill it, and the internal tensions stated against the author's
 own interest. Sibling folios approach the same claim from other
 angles: \tiertag{conjecture} the pentagons folio (IT-PLEROMA) takes
 the axiomatic angle, stating the law whose constants are tested
-here. Limits first: the prediction was never actually registered;
+here. Limits first: the prediction is registered (Zenodo, filed
+2026-08-10) but its strongest data so far predate the filing;
 the dark-energy program it belonged to is closed and $\Lambda$CDM
 stands; the $\Omega$ contradiction ($1/\sqrt{2}$ vs $\ln 2$) is open,
 not resolved. This paper is a status record, not a claim of victory.
@@ -61,7 +62,7 @@ is retained as history. What changes: the original record's
 preregistration framing is kept, its runtime verification script is
 shipped alongside and excerpted in Appendix~\ref{app:script}, and a
 status note is added (\S\ref{sec:status}) recording that the
-dark-energy front is dead, the preregistration was never pursued,
+dark-energy front is dead, the preregistration stands as filed,
 record~30's $\Omega_{\Lambda} = 1/\sqrt{2}$ is withdrawn as circular,
 and the $\Omega$ contradiction remains open. No resolution is
 invented; no new numbers are introduced. Every number below is
@@ -158,11 +159,12 @@ This is the fix the audit index required, stated plainly:
 This paper makes no claim that $\Omega_{\Lambda} = \ln 2$ replaces
 $\Lambda$CDM physics, reopens the dark-energy program, or carries
 any derivation of cosmic acceleration. The DE program is closed.
-\item \emph{The preregistration is open but unpursued.} The
-registration was never filed; \S\ref{sec:retrodiction} explains why
-it could not honestly have been. What stands is the falsifiable
-structure --- prediction, kill thresholds, runtime verification ---
-not a live claim.
+\item \emph{The preregistration is open.} It was filed on Zenodo on
+2026-08-10 (\doi{10.5281/zenodo.21867985}); a status check was added
+as version~2 on 2026-11-25 (\doi{10.5281/zenodo.24530683}).
+\S\ref{sec:retrodiction} explains why the Planck agreement itself was
+not registered. What stands is the falsifiable structure ---
+prediction, kill thresholds, runtime verification.
 \item \emph{Record 30's $\Omega_{\Lambda} = 1/\sqrt{2}$ is
 withdrawn as a value claim.} It was circular: the vacuum offset
 $V_{0}$ was tuned to produce it. (A chiral \emph{ceiling}
@@ -180,7 +182,7 @@ priors (Chen, Huang \& Wang 2019), DESI DR2 BAO, and either Pantheon+
 or DES-Dovekie. The test was pre-registered before it was run
 (Res-Nova \texttt{608182cb}; results in PR \#271).
 
-Most of these data predate the 2026-07-02 registration date, so this
+All of these data predate the 2026-08-10 filing, so this
 is a status check, not the out-of-window test the registration
 describes.
 \begin{itemize}
@@ -194,12 +196,13 @@ $H_{0} \ge 71$, is not reached.
 data centers at $\Omega_{\Lambda} \approx 0.698$. That has moved
 from Planck's $0.6847$ past $\ln 2 = 0.6931$, and is now closer to
 it. Not falsified.
-\item \emph{P4} ($w = -1$): \key{under pressure}. On the same data
-an evolving $(w_{0}, w_{a})$ fit improves on $\Lambda$CDM by
-$\Delta\chi^{2} = 10.75$ (about $2.8\sigma$ for two parameters).
-The published DES-Dovekie + CMB + DESI combination gives
-$w_{0} = -0.803 \pm 0.054$. The registered kill line is
-$w \ne -1$ at $\ge 3\sigma$; this is the threshold to watch.
+\item \emph{P4} ($w = -1$): \key{at its kill line}. Published
+$(w_{0}, w_{a})$ fits prefer evolving dark energy at
+$2.8$--$4.2\sigma$ depending on the supernova sample (DESI DR2);
+DES-Dovekie + CMB + DESI gives $w_{0} = -0.803 \pm 0.054$,
+$w_{a} = -0.72 \pm 0.21$, $3.2\sigma$ (Popovic et al.\ 2025). The
+registered kill line is a \emph{confirmed} $w \ne -1$ at $> 3\sigma$;
+the evidence sits at it and depends on the sample.
 \end{itemize}
 
 \goldrule
@@ -269,8 +272,8 @@ Mpc^{-1}}$ uncertainty,'' \emph{Astrophys.\ J.\ Lett.\ }
 
 \bibitem{rec21867985} R.~W.~Yett, ``$\Omega$CDM: A Pre-Registered
 Cosmological Prediction: $\Omega_{\Lambda} = \ln 2$,''
-Zenodo \doi{10.5281/zenodo.21867985} (2026). Superseded by this
-folio; retained as history.
+Zenodo \doi{10.5281/zenodo.21867985} (2026); version~2 with the
+2026-11-25 status check, \doi{10.5281/zenodo.24530683}.
 
 \bibitem{rec30} Record 30 of the Zenodo corpus
 ($\Omega_{\Lambda} = 1/\sqrt{2}$ via tuned $V_{0}$): value claim

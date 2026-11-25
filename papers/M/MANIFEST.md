@@ -16,9 +16,10 @@ angle on the same claim.
 - INDEX #23 fixed via a four-point status note (§4):
   1. The dark-energy front is DEAD — ΛCDM stands; the paper claims
      no replacement physics and reopens no DE program.
-  2. The preregistration was never pursued/filed — it stands as an
-     open falsifiable structure (prediction + kill thresholds +
-     runtime verification), not a live claim.
+  2. The preregistration stands as filed (Zenodo 10.5281/zenodo.21867985,
+     2026-08-10; status-check version 2 on 2026-11-25,
+     10.5281/zenodo.24530683). [Corrected 2026-11-25: an earlier line here
+     said it was never filed, which was wrong.]
   3. Record 30's Ω_Λ = 1/√2 is WITHDRAWN as a value claim
      (circular: V₀ tuned). The chiral ceiling Ω ≤ 1/√2 as a bound
      is explicitly not adjudicated here.
